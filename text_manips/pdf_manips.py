@@ -10,7 +10,7 @@ from nltk.corpus import stopwords
 def pdf_wfreq(url, wf=100):
     txt_file = 'text2analyse'
     cmd1 = 'wget ' + "\"" + url + "\""  + ' -O ' + (txt_file + '.pdf >/dev/null 2>&1') 
-    cmd3 = 'pdftotext &> /dev/null; if [ $? -ne 0 ]; then echo echo \"It appears that pdftools is not installed...would you like to install it? y/n\" else exit 0 fi read answer if [ $answer == \'y\' ]; then sudo apt-get install poppler-utils else exit 0 fi'
+    cmd3 = 'pdftotext &> /dev/null; if [ $? -ne 0 ]; then echo echo \"It appears that pdftools is not installed...would you like to install it? y/n\"; else exit 0; fi; read answer; if [ $answer == \'y\' ]; then sudo apt-get install poppler-utils; else exit 0; fi'
     cmd2 = 'pdftotext -enc UTF-8 ' + txt_file + '.pdf'  + ' ' + txt_file + '.txt'
     
     
