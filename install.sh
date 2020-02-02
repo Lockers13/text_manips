@@ -1,5 +1,5 @@
 #!/bin/bash
-
+pdftotext &> /dev/null
 if [ $? -ne 0 ]; then
     echo
     echo "It appears that pdftools is not installed...would you like to install it? y/n"
