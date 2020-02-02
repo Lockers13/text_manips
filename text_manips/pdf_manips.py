@@ -34,7 +34,7 @@ def pdf_wfreq(url, wf=100):
     most_freq = nlargest(wf, word_dict, key=word_dict.get)
     with open('word_freq.txt', 'w+') as f:
         for i in most_freq:
-            f.write('{0} : {1}'.format(i, word_dict[i]))
+            f.write('{0} : {1}\n'.format(i, word_dict[i]))
         
 
 
