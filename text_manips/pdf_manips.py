@@ -9,10 +9,13 @@ from nltk.corpus import stopwords
 
 def pdf_wfreq(url, wf=100):
     txt_file = 'text2analyse'
-    cmd1 = 'wget ' + "\"" + url + "\""  + ' -O ' + (txt_file + '.pdf >/dev/null 2>&1')    
-    cmd2 = 'pdftotext -enc UTF-8 ' + txt_file + '.pdf'  + ' ' + txt_file + '.txt; ../install.sh'
+    cmd1 = 'wget ' + "\"" + url + "\""  + ' -O ' + (txt_file + '.pdf >/dev/null 2>&1') 
+    cmd3 = '../install.sh'
+    cmd2 = 'pdftotext -enc UTF-8 ' + txt_file + '.pdf'  + ' ' + txt_file + '.txt'
+    
     
     os.system(cmd1)
+    os.system(cmd3)
     os.system(cmd2)
     
     with open(txt_file+'.txt', "r") as f:
