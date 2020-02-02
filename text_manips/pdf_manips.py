@@ -31,9 +31,10 @@ def pdf_wfreq(url, wf=100):
                 except UnicodeEncodeError:
                     continue
         
-        most_freq = nlargest(wf, word_dict, key=word_dict.get)
+    most_freq = nlargest(wf, word_dict, key=word_dict.get)
+    with open('word_freq.txt', 'w+') as f:
         for i in most_freq:
-            print(i + ':', word_dict[i])
+            f.write(i + ':', word_dict[i])
         
 
 
