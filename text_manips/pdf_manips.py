@@ -14,7 +14,7 @@ def pdf_wfreq(path, wf=100):
     Number of words returned is given by keyword argument wf"""
 
     isUrl = path.startswith('http')
-    txt_file = 'text2analyse' if isUrl else os.splitext(path)[0]
+    txt_file = 'text2analyse' if isUrl else os.path.splitext(path)[0]
     if isUrl:
         cmd1 = 'wget ' + "\"" + path + "\""  + ' -O ' + (txt_file + '.pdf >/dev/null 2>&1')
         os.system(cmd1)
