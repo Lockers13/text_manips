@@ -1,2 +1,0 @@
-sudo apt-get poppler-utils
-pip install nltk

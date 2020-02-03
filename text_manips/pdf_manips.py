@@ -8,12 +8,16 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 def pdf_wfreq(url, wf=100):
+    """Takes a specified pdf and converts it to .txt format
+
+    Subsequently analyses the frequency of words occurring in the said .txt file and returns result in a dictionary
+    Number of words returned is given by keyword argument wf"""
+
     txt_file = 'text2analyse'
     cmd1 = 'wget ' + "\"" + url + "\""  + ' -O ' + (txt_file + '.pdf >/dev/null 2>&1') 
     cmd2 = 'pdftotext -enc UTF-8 ' + txt_file + '.pdf'  + ' ' + txt_file + '.txt >/dev/null 2>&1'
     
     os.system(cmd1)
-    
     os.system(cmd2)
     
     with open(txt_file+'.txt', "r") as f:
@@ -33,11 +37,8 @@ def pdf_wfreq(url, wf=100):
                     continue
         
     most_freq = nlargest(wf, word_dict, key=word_dict.get)
-    with open('word_freq.txt', 'w+') as f:
-        for i in most_freq:
-            f.write('{0} : {1}\n'.format(i, word_dict[i]))
+    return most_freq
+#    with open('word_freq.txt', 'w+') as f:
+#        for i in most_freq:
+#            f.write('{0} : {1}\n'.format(i, word_dict[i]))
         
-
-
-        
-
