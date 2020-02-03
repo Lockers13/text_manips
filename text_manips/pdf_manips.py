@@ -20,7 +20,7 @@ def pdf_wfreq(path, wf=100):
         os.system(cmd1)
         path = txt_file+'.pdf'
  
-    cmd2 = 'pdftotext -enc UTF-8 ' + "\"" + path  + ' ' + "\"" + txt_file + '.txt\"'  
+    cmd2 = 'pdftotext -enc UTF-8 ' + "\"" + path + "\"" + ' ' + "\"" + txt_file + '.txt\"'  
     os.system(cmd2)
 
     with open(txt_file+'.txt', "r") as f:
