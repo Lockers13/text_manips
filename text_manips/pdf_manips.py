@@ -2,8 +2,9 @@ from heapq import nlargest
 import argparse
 import os
 import sys
-
+import matplotlib.pyplot as plt
 import nltk
+import numpy as np
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 
@@ -22,7 +23,17 @@ def pdf_wfreq(path, mode='print', wf=100):
             for i in most_freq:
                 f.write('{0} : {1}\n'.format(i, word_dict[i]))
 
-    mode_case = {'print': print_freq, 'file': file_freq}
+    def graph_freq():
+        x = np.array(most_freq)
+        y = np.array([word_dict[i] for i in most_freq])
+        plt.figure(figsize=(10, 10))
+        plt.barh(x, y)
+        plt.show()
+   
+
+    if mode == 'graph':
+        wf = 25
+    mode_case = {'print': print_freq, 'file': file_freq, 'graph': graph_freq}
 
     isUrl = path.startswith('http')
     txt_file = 'text2analyse'
