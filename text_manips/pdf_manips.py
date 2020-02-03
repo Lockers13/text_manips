@@ -14,14 +14,14 @@ def pdf_wfreq(path, wf=100):
     Number of words returned is given by keyword argument wf"""
 
     isUrl = path.startswith('http')
-    txt_file = 'text2analyse' if isUrl else os.path.splitext(path)[0]
+    txt_file = 'text2analyse'
     if isUrl:
         cmd1 = 'wget ' + "\"" + path + "\""  + ' -O ' + (txt_file + '.pdf >/dev/null 2>&1')
         os.system(cmd1)
+        path = txt_file+'.pdf'
  
-    cmd2 = 'pdftotext -enc UTF-8 ' + txt_file + '.pdf'  + ' ' + txt_file + '.txt >/dev/null 2>&1'    
+    cmd2 = 'pdftotext -enc UTF-8 ' + "\"" + path  + ' ' + "\"" + txt_file + '.txt\" >/dev/null 2>&1' 
     os.system(cmd2)
-    
     with open(txt_file+'.txt', "r") as f:
         word_dict = {}
         words = f.read().split()
@@ -39,7 +39,11 @@ def pdf_wfreq(path, wf=100):
                     continue
         
     most_freq = nlargest(wf, word_dict, key=word_dict.get)
-    return most_freq
+    for i in most_freq:
+        print('{0} : {1}'.format(i, word_dict[i]))     
+
+
+
 #    with open('word_freq.txt', 'w+') as f:
 #        for i in most_freq:
 #            f.write('{0} : {1}\n'.format(i, word_dict[i]))
