@@ -28,7 +28,9 @@ def pdf_wfreq(path, mode='print', wf=100):
         y = np.array([word_dict[i] for i in most_freq])
         plt.figure(figsize=(10, 10))
         plt.barh(x, y)
+        plt.savefig('word_freq.png')
         plt.show()
+        
    
 
     if mode == 'graph':
