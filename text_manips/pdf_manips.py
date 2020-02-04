@@ -14,9 +14,6 @@ def wfreq(path):
     Subsequently analyses the frequency of words occurring in the said .txt file and returns result in a dictionary
     Number of words returned is given by keyword argument wf"""
 
-
-    
-
     if os.path.splitext(path)[1] == '.pdf':
         isUrl = path.startswith('http')
         txt_file = 'text2analyse'
@@ -43,11 +40,7 @@ def wfreq(path):
                             word_dict[i] = 1
                     except UnicodeEncodeError:
                         continue
-        
-            
-        #most_freq = nlargest(wf, word_dict, key=word_dict.get)
-        
-        #mode_case[mode]()
+
         cmd3 = 'rm -r text2analyse.pdf text2analyse.txt >/dev/null 2>&1'
         os.system(cmd3)
         return word_dict
